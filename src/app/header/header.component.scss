@@ -1,0 +1,111 @@
+
+@import '../../variables.scss';
+
+header {
+    background-color: $cinza;
+    .container {
+        position: relative;
+        h1 {
+            background-image: url(../../assets/img/money-32.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+                  
+            font-size: 14pt;
+            padding-left: 50px;
+            height: 70px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        a {
+            text-decoration: none;
+            transition: 0.5s;
+            &:hover {
+                text-decoration: underline;
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+@media(max-width: 1024px) {
+    header {
+        button.nav-btnOpen {
+            background-color: $cinza;
+            font-size: 20pt;
+            padding: 10px 15px;
+            border: none;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+        }
+        nav {
+            background-color: $cinza-escuro;
+            height: 100%;
+            width: 0;
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            right: 0;
+            transition: 0.5s;
+            button.nav-btnClose {
+                background-color: $cinza-escuro;
+                color: $branco;
+                border: none;
+                position: absolute;
+                top: 0;
+                left: 20px;
+                font-size: 30pt;
+                font-weight: bold;
+            }
+            ul {
+                padding-top: 50px;
+                svg{
+                    display: none;
+                }
+                li {
+                    margin: 20px 15px;
+                    text-align: right;
+                    a {
+                        font-size: 16pt;
+                        color: $branco;
+                    }
+                }
+            }
+        }
+        .open {
+            width: 300px;
+            transition: 0.5s;
+        }
+    }
+}
+
+
+@media(min-width: 1025px) {
+    button.nav-btnOpen {
+        display: none;
+    }
+    nav {
+        button.nav-btnClose {
+            display: none;
+        }
+        ul {
+            background-color: $branco;
+            list-style: none;
+            font-size: 14pt;
+
+            position: absolute;
+            padding: 8px;
+            top: 12px;
+            right: 0;
+            li {
+                display: inline;
+                margin: 12px;
+                a {
+                    display: table-cell;
+                    vertical-align: middle;
+                    color: $preto;
+                }
+            }
+        }
+    }
+}

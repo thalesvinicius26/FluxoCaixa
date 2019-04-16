@@ -1,0 +1,60 @@
+<section id='form-transacao'>
+  <h2>Nova transação</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <div class="formControl">
+      <label for="tipo">Tipo de transação</label>
+      <select id="tipo" formControlName="tipo">
+        <option value="compra">Compra</option>
+        <option value="venda">Venda</option>
+      </select>
+    </div>
+  
+    <div class="formControl">
+      <label for="nome">Nome da mercadoria</label>
+      <input type="text" id="nome" formControlName="nome" placeholder="Input" />
+    </div>
+  
+    <div class="formControl">
+      <label for="valor">Valor</label>
+      <input type="text" id="valor" formControlName="valor" placeholder="R$ 0,00" />
+    </div>
+  
+    <div class="action">
+      <input type="submit" value="Adicionar transação" />
+    </div>
+
+  </form>
+</section>
+
+<section id='extrato'>
+  <h2>Extrato de transações</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Mercadoria</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transacao of listaTransacao">
+        <td>{{transacao.tipo == 'compra' ? '-' : '+'}}</td>
+        <td>{{transacao.nome}}</td>
+        <td>{{transacao.valor | currency:'BRL':'symbol':'2.2-2'}}</td>
+      </tr>
+      <tr id="total">
+        <td></td>
+        <td>Total</td>
+        <td>{{total | currency:'BRL':'symbol':'2.2-2'}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>{{ status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

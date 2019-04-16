@@ -1,0 +1,20 @@
+<header>
+  <div class="container">
+    <h1>Controle financeiro</h1>
+    <button class="nav-btnOpen" (click)="actionNav()">&#9776;</button>
+    <nav [ngClass]="{'open': navOpen}">
+      <button class="nav-btnClose" (click)="actionNav()">&times;</button>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <svg width="25px" height="25px">
+          <line stroke="#404040" stroke-width="1.4412" stroke-linecap="round" stroke-linejoin="round" x1="12.9" y1="30" x2="12.9" y2="1"/>
+        </svg>
+        <li><a href="#">Resumo</a></li>
+        <svg width="25px" height="25px">
+          <line stroke="#404040" stroke-width="1.4412" stroke-linecap="round" stroke-linejoin="round" x1="12.9" y1="30" x2="12.9" y2="1"/>
+        </svg>
+        <li><a href="#">Configurações</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

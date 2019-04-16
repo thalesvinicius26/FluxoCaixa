@@ -1,0 +1,173 @@
+@import "../../variables.scss";
+
+@mixin format-input {
+    height: 30px;
+    width: 100%;
+    border: solid 2px $cinza;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: $cinza-escuro;
+    background: $branco;
+    
+}
+
+section {
+    margin-top: 50px;
+    h2 {
+        font-size: 14pt;
+        font-weight: bold;
+        text-align: center;
+        margin: 15px 0;
+    }
+}
+
+#form-transacao {
+    float: left;
+    padding: 10px;
+    border: solid 2px $cinza;
+    border-radius: 5px;
+    width: calc(100% * 0.3);
+
+    form {
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        select {
+            @include format-input;
+            height: 35px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            background: url('../../assets/img/down-arrow.png');
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+        input {
+            @include format-input;
+        }
+        input[type=submit] {
+            height: 35px;
+            color: $branco;
+            border-color: $cinza-escuro;
+            background-color: $cinza-escuro;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#extrato {
+    float: right;
+    padding: 10px 0;
+    width: calc(100% * 0.6);
+    table {
+        width: 100%;
+
+        tr {
+            border-bottom: solid 2px $cinza;
+            th, td {
+                padding: 10px 0;
+            }
+        }
+        thead {
+            tr {
+                font-weight: bold;
+                th:nth-child(2) {
+                    text-align: left;
+                }
+                th:nth-child(3) {
+                    text-align: right;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td:nth-child(1) {
+                    text-align: center;
+                }
+                td:nth-child(3) {
+                    text-align: right;
+                }
+            }
+            tr#total {
+                border-top: double 5px $cinza;
+                font-weight: bold;
+            }
+            tr:last-child{
+                border: none;
+                font-size: 8pt;
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 768px) {
+    #form-transacao {
+        margin-top: 20px;
+        padding: 10px 0;
+        border: none;
+        float: none;
+        width: 100%;
+        h2 {
+            display: none;
+        }
+        form {
+            div {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+
+    #extrato {
+        float: none;
+        width: 100%;
+        border-top: solid 2px $cinza;
+
+        table {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media(min-width: 769px) and (max-width: 1024px) {
+    #form-transacao {
+        float: none;
+        width: 100%;
+        form {
+            margin: 0 auto;
+            div.formControl {
+                width: 20%;
+                float: left;
+                clear: right;
+            }
+            div.formControl:nth-child(2) {
+                width: 50%;
+                float: left;
+                clear: right;
+                margin: 0 30px;
+            }
+            div.action {
+                text-align: right;
+            }
+            input[type=submit] {
+                width: 20%;
+            }
+        }
+    }
+
+    #extrato {
+        float: none;
+        border: none;
+        width: 100%;
+    }
+}
