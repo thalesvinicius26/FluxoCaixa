@@ -8,24 +8,24 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  formulario: any;
-  listaTransacao: Array<any>;
-  total: number = 0;
-  status: string;
+  private formulario: any;
+  private listaTransacao: Array<any>;
+  private status: string;
+  private total = 0;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      tipo: ['compra', Validators.required],
-      nome: [null, Validators.required],
-      valor: [null, Validators.required]
+      tipo:   ['compra', Validators.required],
+      nome:   [null, Validators.required],
+      valor:  [null, Validators.required]
     });
 
     this.setLista();
   }
 
-  onSubmit() {
+  private onSubmit(): void {
     if (this.formulario.valid) {
       this.listaTransacao = this.listaTransacao || [];
       this.listaTransacao.push({
@@ -34,24 +34,23 @@ export class HomeComponent implements OnInit {
         valor: parseFloat(this.formulario.get('valor').value)
       });
 
-      this.listaTransacao.forEach(item => {
-        if (item.tipo === 'compra') {
-          this.total -= parseFloat(item.valor);
-        } else {
-          this.total += parseFloat(item.valor);
-        }
-      });
-
       localStorage.setItem('transacoes', JSON.stringify(this.listaTransacao));
-      localStorage.setItem('transacoes-total', JSON.stringify(this.total));
-
       this.setLista();
     }
   }
 
-  setLista() {
+  private setLista(): void {
+    this.total = 0;
     this.listaTransacao = JSON.parse(localStorage.getItem('transacoes'));
-    this.total = JSON.parse(localStorage.getItem('transacoes-total'));
+
+    this.listaTransacao.forEach(item => {
+      if (item.tipo === 'compra') {
+        console.log(item.valor);
+        this.total -= parseFloat(item.valor);
+      } else {
+        this.total += parseFloat(item.valor);
+      }
+    });
 
     if (this.total > 0) {
       this.status = '[LUCRO]';

@@ -41,14 +41,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let transacao of listaTransacao">
-        <td>{{transacao.tipo == 'compra' ? '-' : '+'}}</td>
-        <td>{{transacao.nome}}</td>
-        <td>{{transacao.valor | currency:'BRL':'symbol':'2.2-2'}}</td>
+        <td>{{ transacao.tipo == 'compra' ? '-' : '+' }}</td>
+        <td>{{ transacao.nome }}</td>
+        <td>{{ transacao.valor | currency:'BRL':'symbol':'2.2-2' }}</td>
       </tr>
       <tr id="total">
         <td></td>
         <td>Total</td>
-        <td>{{total | currency:'BRL':'symbol':'2.2-2'}}</td>
+        <td>{{ total | currency:'BRL':'symbol':'2.2-2' }}</td>
       </tr>
       <tr>
         <td></td>
